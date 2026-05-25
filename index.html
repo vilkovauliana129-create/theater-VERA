@@ -1,18 +1,325 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Театр — Главная</title>
+<title>Театр Вера</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: #faf7f0;
+color: #2c2b28;
+line-height: 1.4;
+}
+
+header {
+background: #2e241f;
+color: #e8d9b0;
+padding: 20px 0;
+text-align: center;
+}
+
+header h1 {
+font-size: 36px;
+letter-spacing: 2px;
+}
+
+nav {
+margin-top: 15px;
+}
+
+nav a {
+color: #e8d9b0;
+text-decoration: none;
+margin: 0 20px;
+font-weight: bold;
+cursor: pointer;
+}
+
+nav a:hover {
+color: #c2a15b;
+}
+
+.container {
+max-width: 1100px;
+margin: 0 auto;
+padding: 20px;
+}
+
+.section {
+margin-bottom: 50px;
+}
+
+h2 {
+font-size: 32px;
+margin-bottom: 20px;
+color: #3e2a23;
+border-left: 5px solid #c2a15b;
+padding-left: 15px;
+}
+
+.cards {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+}
+
+.card {
+background: white;
+width: 280px;
+padding: 20px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+text-align: center;
+}
+
+.card img {
+width: 100%;
+height: 180px;
+object-fit: cover;
+margin-bottom: 15px;
+}
+
+.card h3 {
+font-size: 20px;
+margin-bottom: 8px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+background: white;
+box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+th {
+background: #3e2a23;
+color: #e8d9b0;
+}
+
+button {
+background: #c2a15b;
+color: white;
+border: none;
+padding: 8px 20px;
+cursor: pointer;
+font-weight: bold;
+}
+
+button:hover {
+background: #a07e42;
+}
+
+footer {
+background: #2e241f;
+color: #e8d9b0;
+text-align: center;
+padding: 20px;
+margin-top: 40px;
+}
+
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.6);
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+.modal-content {
+background: white;
+padding: 30px;
+width: 320px;
+text-align: center;
+}
+
+.modal-content button {
+margin: 5px;
+}
+
+html {
+scroll-behavior: smooth;
+}
+</style>
 </head>
 <body>
+
+<header>
+<h1>ТЕАТР ВЕРА</h1>
 <nav>
-<a href="index.html">Главная</a>
-<a href="plays.html">Спектакли</a>
-<a href="actors.html">Актёры</a>
-<a href="schedule.html">Расписание</a>
-<a href="tickets.html">Билеты</a>
+<a href="#spectacles">Спектакли</a>
+<a href="#actors">Актёры</a>
+<a href="#schedule">Расписание</a>
 </nav>
+</header>
+
+<div class="container">
+<div class="section" id="spectacles">
+<h2>Спектакли</h2>
+<div class="cards" id="playsList"></div>
+</div>
+
+<div class="section" id="actors">
+<h2>Труппа</h2>
+<div class="cards" id="actorsList"></div>
+</div>
+
+<div class="section" id="schedule">
+<h2>Расписание и билеты</h2>
+<table id="scheduleTable">
+<thead>
+<tr><th>Спектакль</th><th>Дата</th><th>Время</th><th>Цена</th><th></th></tr>
+</thead>
+<tbody id=
+
+.insertRow();
+row.insertCell(0).innerText = schedule[i].playName;
+row.insertCell(1).innerText = schedule[i].date;
+row.insertCell(2).innerText = schedule[i].time;
+row.insertCell(3).innerText = schedule[i].price + " руб";
+
+let btnCell = row.insertCell(4);
+let buyBtn = document.createElement("button");
+buyBtn.innerText = "Купить";
+buyBtn.setAttribute("data-index", i);
+btnCell.appendChild(buyBtn);
+}
+
+// МОДАЛЬНОЕ ОКНО
+const modal = document.getElementById("modal");
+const modalPlayName = document.getElementById("modalPlayName");
+const closeModalBtn = document.getElementById("closeModal");
+
+const allBuyButtons = document.querySelectorAll("button[data-index]");
+for (let i = 0; i < allBuyButtons.length; i++) {
+allBuyButtons[i].addEventListener("click", function() {
+let idx = parseInt(this.getAttribute("data-index"));
+modalPlayName.innerText = "Спектакль: " + schedule[idx].playName;
+modal.style.display = "flex";
+});
+}
+
+closeModalBtn.addEventListener("click", function() {
+modal.style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+if (event.target === modal) {
+modal.style.display = "none";
+}
+});
+</script>
+
 </body>
-</html>
+</html>"schedule
+14:24
+
+Body"></tbody>
+</table>
+</div>
+</div>
+
+<footer>
+<p>Нижний Новгород, 2026 | Театр Вера</p>
+</footer>
+
+<div id="modal" class="modal">
+<div class="modal-content">
+<h3>Добавлено в Избранное</h3>
+<p id="modalPlayName"></p>
+<button id="closeModal">Закрыть</button>
+</div>
+</div>
+
+<script>
+// СПЕКТАКЛИ (с твоими картинками)
+const plays = [
+{ name: "Вишнёвый сад", author: "А.П. Чехов", img: "images/cherry.jpg" },
+{ name: "Капитанская дочка", author: "А.С. Пушкин", img: "images/captains_daughter.jpg" },
+{ name: "Ревизор", author: "Н.В. Гоголь", img: "images/inspector_general.jpg" },
+{ name: "Гамлет", author: "У. Шекспир", img: "images/hamlet.jpg" },
+{ name: "Алые паруса", author: "А. Грин", img: "images/scarlet_sails.jpg" },
+{ name: "Синяя птица", author: "М. Метерлинк", img: "images/blue_bird.jpg" },
+{ name: "Операция Дети", author: "современная драма", img: "images/children_operational.jpg" },
+{ name: "9 рота", author: "Ю. Коротков", img: "images/9th_company.jpg" },
+{ name: "Бардак", author: "современная драма", img: "images/bardak.jpg" },
+{ name: "Зимняя ночь", author: "современная драма", img: "images/winter_no.jpg" }
+];
+
+// АКТЁРЫ (с твоими картинками, имена по файлам)
+const actors = [
+{ name: "Аверин", role: "Народный артист", img: "images/averin.jpg" },
+{ name: "Якунина", role: "Заслуженная артистка", img: "images/yakunina.jpg" },
+{ name: "Леонов", role: "Артист драмы", img: "images/leonov.jpg" },
+{ name: "Черниченко", role: "Ведущий актёр", img: "images/cravchenco.jpg" },
+{ name: "Дгелезнивка", role: "Актриса", img: "images/dgeleznivk.jpg" },
+{ name: "Захарова", role: "Актриса", img: "images/zaharova.jpg" },
+{ name: "Агапов", role: "Артист", img: "images/agapov.jpg" },
+{ name: "Миркурбанов", role: "Артист", img: "images/mircurbanov.jpg" },
+{ name: "Волкова", role: "Актриса", img: "images/volkova.jpg" },
+{ name: "Лазарев", role: "Артист", img: "images/lazarev.jpg" },
+{ name: "Збруев", role: "Артист", img: "images/zbruev.jpg" },
+{ name: "Рацов", role: "Артист", img: "images/racov.jpg" },
+{ name: "Сирин", role: "Актриса", img: "images/sirin.jpg" },
+{ name: "Горелов", role: "Артист", img: "images/gorelov.jpg" },
+{ name: "Андреева", role: "Актриса", img: "images/andreeva.jpg" },
+{ name: "Бойцов", role: "Артист", img: "images/boitsov.jpg" }
+];
+
+// РАСПИСАНИЕ (по первым 5 спектаклям для примера)
+const schedule = [
+{ playName: "Вишнёвый сад", date: "15.05.2026", time: "19:00", price: 800 },
+{ playName: "Капитанская дочка", date: "16.05.2026", time: "18:30", price: 700 },
+{ playName: "Ревизор", date: "17.05.2026", time: "19:00", price: 900 },
+{ playName: "Гамлет", date: "18.05.2026", time: "19:00", price: 1000 },
+{ playName: "Алые паруса", date: "19.05.2026", time: "18:30", price: 850 }
+];
+
+// РИСУЕМ СПЕКТАКЛИ
+const playsDiv = document.getElementById("playsList");
+for (let i = 0; i < plays.length; i++) {
+let card = document.createElement("div");
+card.className = "card";
+card.innerHTML = `
+<img src="${plays[i].img}" alt="${plays[i].name}">
+<h3>${plays[i].name}</h3>
+<p>${plays[i].author}</p>
+`;
+playsDiv.appendChild(card);
+}
+
+// РИСУЕМ АКТЁРОВ
+const actorsDiv = document.getElementById("actorsList");
+for (let i = 0; i < actors.length; i++) {
+let card = document.createElement("div");
+card.className = "card";
+card.innerHTML = `
+<img src="${actors[i].img}" alt="${actors[i].name}">
+<h3>${actors[i].name}</h3>
+<p>${actors[i].role}</p>
+`;
+actorsDiv.appendChild(card);
+}
+
+// РИСУЕМ РАСПИСАНИЕ
+const scheduleBody = document.getElementById("scheduleBody");
+for (let i = 0; i < schedule.length; i++) {
+let row = scheduleBody
+
+
