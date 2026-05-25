@@ -201,7 +201,6 @@ buyBtn.setAttribute("data-index", i);
 btnCell.appendChild(buyBtn);
 }
 
-// МОДАЛЬНОЕ ОКНО
 const modal = document.getElementById("modal");
 const modalPlayName = document.getElementById("modalPlayName");
 const closeModalBtn = document.getElementById("closeModal");
@@ -227,8 +226,7 @@ modal.style.display = "none";
 </script>
 
 </body>
-</html>"schedule
-14:24
+</html>
 
 Body"></tbody>
 </table>
@@ -248,7 +246,6 @@ Body"></tbody>
 </div>
 
 <script>
-// СПЕКТАКЛИ (с твоими картинками)
 const plays = [
 { name: "Вишнёвый сад", author: "А.П. Чехов", img: "images/cherry.jpg" },
 { name: "Капитанская дочка", author: "А.С. Пушкин", img: "images/captains_daughter.jpg" },
@@ -262,7 +259,6 @@ const plays = [
 { name: "Зимняя ночь", author: "современная драма", img: "images/winter_no.jpg" }
 ];
 
-// АКТЁРЫ (с твоими картинками, имена по файлам)
 const actors = [
 { name: "Аверин", role: "Народный артист", img: "images/averin.jpg" },
 { name: "Якунина", role: "Заслуженная артистка", img: "images/yakunina.jpg" },
@@ -282,7 +278,6 @@ const actors = [
 { name: "Бойцов", role: "Артист", img: "images/boitsov.jpg" }
 ];
 
-// РАСПИСАНИЕ (по первым 5 спектаклям для примера)
 const schedule = [
 { playName: "Вишнёвый сад", date: "15.05.2026", time: "19:00", price: 800 },
 { playName: "Капитанская дочка", date: "16.05.2026", time: "18:30", price: 700 },
@@ -291,7 +286,6 @@ const schedule = [
 { playName: "Алые паруса", date: "19.05.2026", time: "18:30", price: 850 }
 ];
 
-// РИСУЕМ СПЕКТАКЛИ
 const playsDiv = document.getElementById("playsList");
 for (let i = 0; i < plays.length; i++) {
 let card = document.createElement("div");
@@ -304,7 +298,6 @@ card.innerHTML = `
 playsDiv.appendChild(card);
 }
 
-// РИСУЕМ АКТЁРОВ
 const actorsDiv = document.getElementById("actorsList");
 for (let i = 0; i < actors.length; i++) {
 let card = document.createElement("div");
@@ -317,7 +310,6 @@ card.innerHTML = `
 actorsDiv.appendChild(card);
 }
 
-// РИСУЕМ РАСПИСАНИЕ
 const scheduleBody = document.getElementById("scheduleBody");
 for (let i = 0; i < schedule.length; i++) {
 let row = scheduleBody
