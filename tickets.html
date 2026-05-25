@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Покупка билетов</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Покупка билетов</h1>
+<nav>
+<a href="index.html">Главная</a>
+<a href="plays.html">Спектакли</a>
+<a href="actors.html">Актёры</a>
+<a href="schedule.html">Расписание</a>
+<a href="tickets.html">Билеты</a>
+</nav>
+</header>
+<main>
+<form class="form">
+<h3>Выберите спектакль</h3>
+<select id="play">
+<option value="1200">Вишнёвый сад - 1200 руб</option>
+<option value="1700">Операция Дети - 1700 руб</option>
+<option value="1300">Ревизор - 1300 руб</option>
+</select>
+
+<h3>Количество билетов</h3>
+<input type="number" id="quantity" min="1" max="10" value="1">
+
+<h3>Сумма: <span id="total">1200</span> руб</h3>
+
+<button type="button" id="buyBtn">Купить</button>
+</form>
+</main>
+<footer>
+<p>© 2026 Театр "ВЕРА"</p>
+</footer>
+
+<script>
+let playSelect = document.getElementById("play");
+let quantityInput = document.getElementById("quantity");
+let totalSpan = document.getElementById("total");
+let buyBtn = document.getElementById("buyBtn");
+
+function updateTotal() {
+let price = parseInt(playSelect.value);
+let quantity = parseInt(quantityInput.value);
+totalSpan.innerText = price * quantity;
+}
+
+playSelect.onchange = updateTotal;
+quantityInput.onchange = updateTotal;
+quantityInput.onkeyup = updateTotal;
+
+buyBtn.onclick = function() {
+let playName = playSelect.options[playSelect.selectedIndex].text;
+let quantity = quantityInput.value;
+let total = totalSpan.innerText;
+alert("Куплено билетов: " + quantity + "\nСпектакль: " + playName + "\nСумма: " + total + " руб");
+}
+
+updateTotal();
+</script>
+</body>
+</html>
